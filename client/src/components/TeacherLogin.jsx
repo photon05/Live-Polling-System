@@ -33,9 +33,15 @@ const TeacherLogin = ({ setIsTeacherLoggedIn }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-md w-96">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-8 rounded-lg shadow-md w-96"
+      >
         <h2 className="text-2xl font-bold mb-4 text-center">Teacher Login</h2>
-        
+        <h1 className="text-sm text-left text-gray-600 bg-gray-100 px-4 py-2 rounded mb-4 border border-gray-200 shadow-inner">
+          Use Email: <span className="font-medium">photon@teacher.com</span> and
+          Password: <span className="font-medium">aaaa</span>
+        </h1>
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         <label className="block mb-2 text-sm font-medium">Email</label>
