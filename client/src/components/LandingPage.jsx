@@ -7,7 +7,7 @@ const LandingPage = () => {
 
   const handleNavigate = () => {
     if (selectedRole === 'teacher') {
-      navigate('/teacher');
+      navigate('/teacher/poll'); 
     } else if (selectedRole === 'student') {
       navigate('/student');
     }
