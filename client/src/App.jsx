@@ -1,29 +1,21 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import TeacherLogin from './components/TeacherLogin';
-import TeacherPage from './pages/TeacherPage';
-import StudentPage from './pages/StudentPage';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-export default function App() {
-  const [isTeacherLoggedIn, setIsTeacherLoggedIn] = useState(false);
+import LandingPage from "./pages/LandingPage";
+import TeacherPage from "./pages/TeacherPage";
+import StudentPage from "./pages/StudentPage";
 
-  useEffect(() => {
-    const isLoggedIn = !!sessionStorage.getItem('teacher');
-    setIsTeacherLoggedIn(isLoggedIn);
-  }, []);
-
+const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/teacher" element={<TeacherLogin setIsTeacherLoggedIn={setIsTeacherLoggedIn} />} />
-        <Route
-          path="/teacher/poll"
-          element={isTeacherLoggedIn ? <TeacherPage /> : <TeacherLogin setIsTeacherLoggedIn={setIsTeacherLoggedIn} />}
-        />
+        {/* Removed TeacherLogin Route */}
+        <Route path="/teacher/poll" element={<TeacherPage />} />
         <Route path="/student" element={<StudentPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-}
+};
+
+export default App;
