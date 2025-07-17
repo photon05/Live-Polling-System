@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 
 const socket = io("http://localhost:5000");
 
 const TeacherPage = () => {
+  const navigate = useNavigate();
+
   const [question, setQuestion] = useState("");
-  const [options, setOptions] = useState([{ text: "", isCorrect: false }]);
+  const [options, setOptions] = useState([
+    { text: "", isCorrect: false },
+    { text: "", isCorrect: false }
+  ]);
   const [currentPoll, setCurrentPoll] = useState(null);
   const [results, setResults] = useState(null);
 
@@ -18,6 +24,11 @@ const TeacherPage = () => {
       socket.off("poll:update");
     };
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("teacherToken");
+    navigate("/teacher");
+  };
 
   const handleOptionChange = (index, field, value) => {
     const updated = [...options];
@@ -33,7 +44,10 @@ const TeacherPage = () => {
     const poll = { question, options };
     socket.emit("teacher:createPoll", poll);
     setQuestion("");
-    setOptions([{ text: "", isCorrect: false }]);
+    setOptions([
+      { text: "", isCorrect: false },
+      { text: "", isCorrect: false }
+    ]);
     setResults(null);
   };
 
@@ -45,12 +59,18 @@ const TeacherPage = () => {
   const totalVotes = getTotalVotes();
 
   return (
-    <div className="bg-white min-h-screen p-8">
+    <div className="bg-white min-h-screen p-8 relative">
       {/* Header */}
-      <header className="mb-8">
+      <header className="mb-8 flex justify-between items-center">
         <h1 className="text-sm text-white px-6 py-3 rounded-4xl w-fit bg-gradient-to-r from-[#8F64E1] to-[#1D68BD] shadow-md">
           Intervue Poll
         </h1>
+        <button
+          onClick={handleLogout}
+          className="text-white bg-red-500 px-4 py-2 rounded-md font-medium hover:bg-red-600"
+        >
+          Logout
+        </button>
       </header>
 
       {/* Form */}
