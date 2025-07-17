@@ -26,6 +26,10 @@ app.use(cors());
 app.use(express.json());
 
 // server/index.js
+app.get('/', async (req, res) => {
+  res.send('Welcome to the Live Polling Server');
+});
+
 app.get('/api/polls', async (req, res) => {
   const getPolls = await polls.find().sort({ createdAt: -1 }).limit(10);
   res.json(getPolls);
