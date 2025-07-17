@@ -17,7 +17,7 @@ const LandingPage = () => {
     <div className="landingPage min-h-screen flex items-center justify-center bg-[#F2F2F2] p-4">
       <div className="flex flex-col items-center text-center space-y-6 w-full max-w-3xl">
         <h1 className="text-4xl font-semibold text-[#373737]">
-          Welcome to the <span className="text-[#4F0DCE] font-bold">Live Polling System</span>
+          Welcome to the <span className="text-[#4F0DCE] font-bold">Live Polling System...</span>
         </h1>
 
         <p className="text-2xl text-[#6E6E6E]">Please select your role to get started:</p>
