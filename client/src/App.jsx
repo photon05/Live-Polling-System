@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import TeacherLogin from './components/TeacherLogin';
-import TeacherPage from './pages/teacherPage';
-import StudentPage from './pages/studentPage';
+import TeacherPage from './pages/TeacherPage';
+import StudentPage from './pages/StudentPage';
 
 export default function App() {
   const [isTeacherLoggedIn, setIsTeacherLoggedIn] = useState(false);
